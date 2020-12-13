@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='plotly.min.js') }}"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.css" 
+          integrity="sha512-/zs32ZEJh+/EO2N1b0PEdoA10JkdC3zJ8L5FTiQu82LR9S/rOQNfQN7U59U9BC12swNeRAz3HSzIL2vpp4fv3w==" 
+          crossorigin="anonymous">
+    <title>Interface</title>
+</head>
+<body>
+    <div style="width: 50%; float: left; padding-top: 10px;">
+        
+        <div>
+            Time: <input type="number" id="start-time" value="0">
+            <button id="start-time-btn" is_start="0" onclick="clock()">Start</button>
+            <button id="stop-time-btn" is_start="1" style="display: none;" onclick="stopClock()">Stop</button>
+
+            <!-- <button onclick="stopClock()">Test</button> -->
+        </div>
+
+        <div style="background-image: url(static/CSTR.JPG); margin-top: 30px; background-size: auto; background-position: 50%; background-repeat: no-repeat; height: 360px;">
+            <div style="left: 110px; position: relative;">
+                <div>
+                    <label for="flow_inlet">Flow Inlet:</label>
+                     <b><input type="number" id="text-1" value='0.1'></input></b>
+                </div>
+                <div class="slider">
+                    <input type="range" orient="vertical" id="flow_inlet" name="flow_inlet" min="50" max="150" required>
+                </div>
+            </div>  
+            <div style="position: relative; left: 20px; top: 20px;">
+                <div class="slider" style="left: 45px">
+                    <input type="range" orient="vertical" id="initial_level" name="initial_level" min="0" max="100" required>
+                </div> 
+                <div>
+                    <label for="initial_level">Initial Value(Level): </label>
+                    <b><input type="number" id="text-3" value="0.1"></input></b>
+                </div> 
+            </div> 
+        </div>
+        <div style="padding-left: 37%; top: -35px; position: relative;">
+            <div class="slider" style="width: auto !important; ">
+                <input type="range" orient="vertical" id="heat_inlet" name="heat_inlet" min="4000000" max="8000000" required>
+                <div style="display: inline-block; position: relative; top: -30px;">
+                    <label for="heat_inlet">Heat Duty Inlet: </label>
+                    <b><input type="number" id="text-2" value="600000"></input></b>
+                </div>
+            </div>
+            <!-- <div>
+                <label for="heat_inlet">Heat Duty Inlet: </label>
+               <b><input type="number" id="text-2"></input></b>
+            </div> -->
+        </div>
+        <input type="hidden" id="effTime">
+        <input type="hidden" id="effTemp" >
+    </div>
+    
+    <div>
+        <div id="box-1">
+            
+            
+            
+
+        </div>
+        <div class="container">
+            <canvas id="box-2" style="max-height: 430px; display: inline-block;"></canvas>
+            <canvas id="box-3" style="max-height: 430px; display: inline-block;"></canvas>
+        </div>    
+    </div>
+
+    <div class="wrapper two">
+        <div>
+           <h3>Temprature  vs Time </h3>
+           <div id="chart"></div> 
+        </div>
+        <div>
+            <h3>Liquid level  vs Time </h3>
+            <div id="chart-temp"></div> 
+         </div>
+        
+           </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js" 
+            integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw==" 
+            crossorigin="anonymous">
+    </script>
+
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
+</body>
+</html>
+    
